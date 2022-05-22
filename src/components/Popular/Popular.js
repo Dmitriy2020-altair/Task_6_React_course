@@ -2,6 +2,7 @@ import React from "react";
 import { SelectedLanguages } from "./SelectedLanguages";
 import { Repos } from "./Repos";
 import { fetchPopularRepos } from "../../utils/api";
+import { Loader } from "../Loader/Loader";
 
 class Popular extends React.Component {
     constructor(props) {
@@ -20,14 +21,15 @@ class Popular extends React.Component {
     fetchHandler(language) {
         fetchPopularRepos(language)
             .then(data => this.setState({ repos: data }))
-            .catch(error => console.error(error))
+            .catch(error => this.setState({ error: error.message }))
     }
 
     selectLanguage(language) {
-        this.setState({ selectedLanguage: language });
-        this.fetchHandler(language);
+        if (language !== this.state.selectedLanguage) {
+            this.setState({ selectedLanguage: language, repos: null });
+            this.fetchHandler(language);
+        }
     }
-
     render() {
         return (
             <div>
@@ -35,7 +37,7 @@ class Popular extends React.Component {
                     selectedLanguage={this.state.selectedLanguage}
                     selectLanguageHandler={this.selectLanguage}
                 />
-                {this.state.repos ? <Repos repos={this.state.repos} /> : null}
+                {this.state.repos ? <Repos repos={this.state.repos} /> : <Loader />}
             </div>
         )
     }
