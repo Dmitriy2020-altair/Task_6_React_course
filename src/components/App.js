@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { Home } from './Home/Home';
 import { Battle } from './Battle/Battle';
 import { Popular } from './Popular/Popular';
-import Nav from './Nav/Nav';
+import { Nav } from './Nav/Nav';
 
 export const App = () => {
     return (
