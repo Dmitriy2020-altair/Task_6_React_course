@@ -1,11 +1,9 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
-export const Home = () => {
-    return (
-        <div>
-            <h1 className="page-title">
-                You are on Home page
-            </h1>
-        </div>
-    )
-}
+export const Home = () => (
+    <div className='home-container'>
+        <h1>GitHub Battle: battle your friends... and stuff</h1>
+        <Link className='button' to='/battle'>Battle</Link>
+    </div>
+)
