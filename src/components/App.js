@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { Home } from './Home/Home';
 import { Battle } from './Battle/Battle';
-import { Popular } from './Popular/Popular';
+import Popular from './Popular/Popular';
 import { Nav } from './Nav/Nav';
 
 export const App = () => {
